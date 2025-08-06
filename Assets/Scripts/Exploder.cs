@@ -17,7 +17,7 @@ public class Exploder : MonoBehaviour
 
     private void ExploidCube(Dynamite dynamite)
     {
-        dynamite.Explosion();
+        dynamite.BlowUp();
         _pool.Release(dynamite);
     }
 }

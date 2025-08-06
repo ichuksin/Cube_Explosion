@@ -4,8 +4,6 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private Pool _pool;
 
     private Ray _ray;
 

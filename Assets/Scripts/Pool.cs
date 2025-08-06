@@ -5,25 +5,24 @@ public class Pool : MonoBehaviour
 {
     [SerializeField] private Dynamite _prefab;
 
-    private Queue<Dynamite> _pools = new Queue<Dynamite>();
+    private Queue<Dynamite> _dynamits = new Queue<Dynamite>();
 
     public Dynamite GetObject()
     {
         Dynamite dynamite;
-        if (_pools.Count == 0)
+        if (_dynamits.Count == 0)
         {
             dynamite = Instantiate(_prefab);
         }
         else
         {
-            dynamite = _pools.Dequeue();
+            dynamite = _dynamits.Dequeue();
         }
         return dynamite;
     }
 
     public void Release(Dynamite dynamite)
     {
-        dynamite.gameObject.SetActive(false);
-        _pools.Enqueue(dynamite);
+        _dynamits.Enqueue(dynamite);
     }
 }

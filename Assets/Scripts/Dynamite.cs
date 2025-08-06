@@ -16,7 +16,7 @@ public class Dynamite : MonoBehaviour, IExposable
         transform.localScale = Vector3.one * _scale;
     }
 
-    public void Explosion()
+    public void BlowUp()
     {
         gameObject.SetActive(false);    
     }
