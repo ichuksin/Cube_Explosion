@@ -17,17 +17,17 @@ public class ProbabilityDivider: MonoBehaviour
         _playerInput.ClickOnCube += TryDeride;
     }
 
-    private void TryDeride(Dynamite dynamite)
+    private void TryDeride(Cube cube)
     {
         float probabylitiValue = Random.value;
-        if (probabylitiValue <= dynamite.Probability)
+        if (probabylitiValue <= cube.Probability)
         {
-            IEnumerable<Dynamite> newDynamits =  _spawner.SpawnFromSeparate(dynamite);
-            _exploder.ExploidCube(dynamite, newDynamits);
+            IEnumerable<Cube> newCubes =  _spawner.SpawnFromSeparate(cube);
+            _exploder.ExploidCube(cube, newCubes);
         }
         else
         {
-            _exploder.ExploidCube(dynamite);
+            cube.Disable();
         }
     }
 }

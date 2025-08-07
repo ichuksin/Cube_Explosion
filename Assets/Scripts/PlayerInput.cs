@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 
     private Ray _ray;
 
-    public event UnityAction<Dynamite> ClickOnCube;
+    public event UnityAction<Cube> ClickOnCube;
     
     private void Update()
     {
@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
             if (Physics.Raycast(_ray, out hit))
             {
                 Transform transformHit = hit.transform;
-                if (transformHit.TryGetComponent<Dynamite>(out Dynamite dinamite))
+                if (transformHit.TryGetComponent<Cube>(out Cube dinamite))
                 {
                     ClickOnCube?.Invoke(dinamite);
                 }

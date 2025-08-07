@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    [SerializeField] private Dynamite _prefab;
+    [SerializeField] private Cube _prefab;
 
-    private Queue<Dynamite> _dynamits = new Queue<Dynamite>();
+    private Queue<Cube> _cubess = new Queue<Cube>();
 
-    public Dynamite GetObject()
+    public Cube GetObject()
     {
-        Dynamite dynamite;
-        if (_dynamits.Count == 0)
+        Cube cube;
+        if (_cubess.Count == 0)
         {
-            dynamite = Instantiate(_prefab);
+            cube = Instantiate(_prefab);
         }
         else
         {
-            dynamite = _dynamits.Dequeue();
+            cube = _cubess.Dequeue();
         }
-        return dynamite;
+        return cube;
     }
 
-    public void Release(Dynamite dynamite)
+    public void Release(Cube dynamite)
     {
-        _dynamits.Enqueue(dynamite);
+        _cubess.Enqueue(dynamite);
     }
 }

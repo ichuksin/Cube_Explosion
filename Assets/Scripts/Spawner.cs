@@ -5,12 +5,12 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Material[] _materials;
     [SerializeField] private Pool _pool;
-    private List<Dynamite> _newCubes = new List<Dynamite>();
+    private List<Cube> _newCubes = new List<Cube>();
 
     private int _maxCubes = 7;
     private int _minCubes = 2;
 
-    public IEnumerable<Dynamite> SpawnFromSeparate(Dynamite item)
+    public IEnumerable<Cube> SpawnFromSeparate(Cube item)
     {
         _newCubes.Clear();
         float newScale = item.Scale / 2;
@@ -25,12 +25,13 @@ public class Spawner : MonoBehaviour
         return _newCubes;
     }
 
-    private Dynamite Spawn(float scale, float probability, Vector3 position)
+    private Cube Spawn(float scale, float probability, Vector3 position)
     {
-        Dynamite dinamite = _pool.GetObject();
+        Cube cube = _pool.GetObject();
 
         Vector3 newPosition = position + Random.onUnitSphere;
-        dinamite.Init(scale, probability, newPosition, _materials[Random.Range(0, _materials.Length)]);
-        return dinamite;
+        cube.CubeRenderer.SetMaterial(_materials[Random.Range(0, _materials.Length)]);
+        cube.Init(scale, probability, newPosition);
+        return cube;
     }
 }
