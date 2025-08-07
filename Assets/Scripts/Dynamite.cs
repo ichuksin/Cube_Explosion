@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))] 
-public class Dynamite : MonoBehaviour, IExposable
+public class Dynamite : MonoBehaviour, IExplodibal
 {
     [SerializeField] private float _scale;
     [SerializeField] private float _probabilitySeparation;
@@ -16,7 +16,7 @@ public class Dynamite : MonoBehaviour, IExposable
         transform.localScale = Vector3.one * _scale;
     }
 
-    public void BlowUp()
+    public void Exploid()
     {
         gameObject.SetActive(false);    
     }
