@@ -1,56 +1,36 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private float _explosionRadius;
-    [SerializeField] private float _explosionForce;
     [SerializeField] private Material[] _materials;
     [SerializeField] private Pool _pool;
-    [SerializeField] private PlayerInput _playerInput;
+    private List<Dynamite> _newCubes = new List<Dynamite>();
 
-    private int _minCubes = 2;
     private int _maxCubes = 7;
+    private int _minCubes = 2;
 
-    private void OnEnable()
+    public IEnumerable<Dynamite> SpawnFromSeparate(Dynamite item)
     {
-        _playerInput.ClickOnCube += SpawnFromSeparate;
-    }
-
-    private void OnDisable()
-    {
-        _playerInput.ClickOnCube += SpawnFromSeparate;
-    }
-
-    public void SpawnFromSeparate(Dynamite item)
-    {
+        _newCubes.Clear();
         float newScale = item.Scale / 2;
         float newProbability = item.Probability / 2;
 
-        float random = Random.value;
-        if (random <= item.Probability)
-        {
-            int countCubes = Random.Range(_minCubes, _maxCubes);
+        int countCubes = Random.Range(_minCubes, _maxCubes);
             
-            for (int i = 0; i < countCubes; i++)
-                Spawn(newScale, newProbability, item.transform.position);
+        for (int i = 0; i < countCubes; i++)
+        {
+            _newCubes.Add(  Spawn(newScale, newProbability, item.transform.position));
         }
+        return _newCubes;
     }
 
-    private void Spawn(float scale, float probability, Vector3 position)
+    private Dynamite Spawn(float scale, float probability, Vector3 position)
     {
         Dynamite dinamite = _pool.GetObject();
-        GameObject gameObject = dinamite.gameObject;
 
-        dinamite.Init(scale, probability);
         Vector3 newPosition = position + Random.onUnitSphere;
-        gameObject.transform.position = newPosition;
-        Material material = _materials[Random.Range(0,_materials.Length)];
-        MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
-        renderer.material = material;
-        gameObject.SetActive(true);
-
-        Rigidbody rigidbody = gameObject.transform.GetComponent<Rigidbody>();
-        rigidbody.AddExplosionForce(_explosionForce, position, _explosionRadius);
+        dinamite.Init(scale, probability, newPosition, _materials[Random.Range(0, _materials.Length)]);
+        return dinamite;
     }
-
 }

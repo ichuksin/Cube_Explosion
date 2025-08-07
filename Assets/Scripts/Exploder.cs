@@ -1,21 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
     [SerializeField] private Pool _pool;
-    [SerializeField] private PlayerInput _playerInput;
 
-    private void OnEnable()
+    public void ExploidCube(Dynamite dynamite, IEnumerable<Dynamite> affectedCubes)
     {
-        _playerInput.ClickOnCube += ExploidCube;
+        dynamite.Exploid(affectedCubes);
+        _pool.Release(dynamite);
     }
-
-    private void OnDisable()
-    {
-        _playerInput.ClickOnCube += ExploidCube;
-    }
-
-    private void ExploidCube(Dynamite dynamite)
+    
+    public void ExploidCube(Dynamite dynamite)
     {
         dynamite.Exploid();
         _pool.Release(dynamite);

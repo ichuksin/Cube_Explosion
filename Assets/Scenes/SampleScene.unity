@@ -387,6 +387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _scale
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -528,6 +532,7 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
+  - component: {fileID: 963194233}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -634,14 +639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff80cf47a2b16a7439ddc2ebae941739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 2
-  _explosionForce: 1000
   _materials:
   - {fileID: 2100000, guid: 174cea1c93914014bab19a9c6dc8695a, type: 2}
   - {fileID: 2100000, guid: d88f9472c15b9824c9ecba893f0ef356, type: 2}
   - {fileID: 2100000, guid: 50d1f9826dbe6a3499573f9c0ca14271, type: 2}
   _pool: {fileID: 963194231}
-  _playerInput: {fileID: 963194229}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad85078528c615344a816422e2c1b3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6769078310186103581, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+  _prefab: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +670,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pool: {fileID: 963194231}
+--- !u!114 &963194233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3704acbdba0e7fb4c92c44ae1907d1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 963194230}
+  _exploder: {fileID: 963194232}
   _playerInput: {fileID: 963194229}
 --- !u!1 &1411198976
 GameObject:
@@ -786,6 +802,10 @@ PrefabInstance:
     - target: {fileID: 1342886027143147679, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_Name
       value: Cube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _scale
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity
@@ -977,6 +997,10 @@ PrefabInstance:
     - target: {fileID: 1342886027143147679, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _scale
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity

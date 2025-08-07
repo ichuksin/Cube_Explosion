@@ -1,4 +1,6 @@
-﻿public interface IExplodibal
+﻿using System.Collections.Generic;
+
+public interface IExplodibal
 {
-    void Exploid() ;
+    void Exploid(IEnumerable<Dynamite> affectedCubes) ;
 };
