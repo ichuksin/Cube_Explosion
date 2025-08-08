@@ -5,29 +5,27 @@ public class ProbabilityDivider: MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Exploder _exploder;
-    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private Raycaster _raycaster;
 
     private void OnEnable()
     {
-        _playerInput.ClickOnCube += TryDeride;
+        _raycaster.ClickOnCube += TryDevide;
     }
 
     private void OnDisable()
     {
-        _playerInput.ClickOnCube += TryDeride;
+        _raycaster.ClickOnCube += TryDevide;
     }
 
-    private void TryDeride(Cube cube)
+    private void TryDevide(Cube cube)
     {
         float probabylitiValue = Random.value;
+
+        IEnumerable<Cube> newCubes = new List<Cube>();
+
         if (probabylitiValue <= cube.Probability)
-        {
-            IEnumerable<Cube> newCubes =  _spawner.SpawnFromSeparate(cube);
-            _exploder.ExploidCube(cube, newCubes);
-        }
-        else
-        {
-            cube.Disable();
-        }
+            newCubes =  _spawner.SpawnFromSeparate(cube);
+ 
+        _exploder.ExploideCube(cube, newCubes);
     }
 }

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))] 
 public class Cube : MonoBehaviour
@@ -16,11 +15,7 @@ public class Cube : MonoBehaviour
     public Rigidbody Rigidbody => _rigidbody;
     public CubeRenderer CubeRenderer => _cubeRenderer;
 
-    private void Awake()
-    {
-        _rigidbody = gameObject.transform.GetComponent<Rigidbody>();
-    }
-
+    public event UnityAction<Cube> Exploded;
     public void Init(float scale, float probabilitySeparation, Vector3 position)
     {
         _scale = scale;
@@ -30,13 +25,19 @@ public class Cube : MonoBehaviour
         Enable();
     }
 
+    public void Exploid()
+    {
+        Exploded?.Invoke(this);
+        gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        _rigidbody = gameObject.transform.GetComponent<Rigidbody>();
+    }
+
     private void Enable()
     {
         gameObject.SetActive(true);
-    }
-
-    public void Disable()
-    {
-        gameObject.SetActive(false);
     }
 }
