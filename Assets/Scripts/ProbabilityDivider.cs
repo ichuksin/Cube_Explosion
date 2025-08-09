@@ -30,6 +30,5 @@ public class ProbabilityDivider: MonoBehaviour
             affectedCubes = _exploideAffect.GetAffected(cube);
 
         _exploder.ExploideCube(cube, affectedCubes);
- 
     }
 }
