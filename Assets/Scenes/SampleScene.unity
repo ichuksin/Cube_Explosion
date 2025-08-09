@@ -186,8 +186,8 @@ Transform:
   m_GameObject: {fileID: 196853306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
+  m_LocalScale: {x: 1, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -406,6 +406,14 @@ PrefabInstance:
       propertyPath: _cubeRenderer
       value: 
       objectReference: {fileID: 844378567}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -516,8 +524,8 @@ Transform:
   m_GameObject: {fileID: 924156863}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -560,6 +568,7 @@ GameObject:
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
   - component: {fileID: 963194234}
+  - component: {fileID: 963194235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -699,8 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939662052ef699d40951ce7bf1b5994d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 2
-  _explosionForce: 3000
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,6 +723,7 @@ MonoBehaviour:
   _spawner: {fileID: 963194230}
   _exploder: {fileID: 963194232}
   _raycaster: {fileID: 963194234}
+  _exploideAffect: {fileID: 963194235}
 --- !u!114 &963194234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +738,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
   _inputReader: {fileID: 963194229}
+--- !u!114 &963194235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9e081aa5bedf94ba6ab509a672db9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1316886253 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
@@ -767,8 +787,8 @@ Transform:
   m_GameObject: {fileID: 1411198976}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -831,8 +851,8 @@ Transform:
   m_GameObject: {fileID: 1573590556}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -14}
+  m_LocalScale: {x: 1, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -878,6 +898,14 @@ PrefabInstance:
       propertyPath: _cubeRenderer
       value: 
       objectReference: {fileID: 1594907972}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -988,8 +1016,8 @@ Transform:
   m_GameObject: {fileID: 1628025097}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -1041,8 +1069,8 @@ Transform:
   m_GameObject: {fileID: 1693917378}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: -12, z: 0}
+  m_LocalScale: {x: 1, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50082559}
@@ -1088,6 +1116,14 @@ PrefabInstance:
       propertyPath: _cubeRenderer
       value: 
       objectReference: {fileID: 3141395062710109366}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245119735149561451, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
+      propertyPath: _explosionRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6345213125147798757, guid: 4aae828d17b805f4680647c23f4df2c0, type: 3}
       propertyPath: m_UseGravity
       value: 1

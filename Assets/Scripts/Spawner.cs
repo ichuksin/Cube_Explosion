@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour
 
     private float _divideScale = 2.0f;
     private float _divideProbability = 2.0f;
+    private float _multipleRadius = 1.5f;
+    private float _multipleForce = 2.0f;
 
     private void OnEnable()
     {
@@ -32,12 +34,14 @@ public class Spawner : MonoBehaviour
     {
         float newScale = item.Scale / _divideScale;
         float newProbability = item.Probability / _divideProbability;
+        float newRadius = item.ExplosionRadius * _multipleRadius;
+        float newForce = item.ExplosionForce * _multipleForce;
 
         int countCubes = Random.Range(_minCubes, _maxCubes + 1);
             
         for (int i = 0; i < countCubes; i++)
         {
-            _newCubes[i] =  Spawn(newScale, newProbability, item.transform.position);
+            _newCubes[i] =  Spawn(newScale, newProbability, newRadius, newForce, item.transform.position);
             _newCubes[i].Exploded += Release;
             _ñubes.Add(_newCubes[i]);
         }
@@ -51,16 +55,17 @@ public class Spawner : MonoBehaviour
     private void Release(Cube cube)
     {
         cube.Exploded -= Release;
+        _ñubes.Remove(cube);
         _pool.Release(cube);     
     }
 
-    private Cube Spawn(float scale, float probability, Vector3 position)
+    private Cube Spawn(float scale, float probability, float radius, float force, Vector3 position)
     {
         Cube cube = _pool.GetObject();
 
         Vector3 newPosition = position + Random.onUnitSphere;
         cube.CubeRenderer.SetMaterial(_materials[Random.Range(0, _materials.Length)]);
-        cube.Init(scale, probability, newPosition);
+        cube.Init(scale, probability, radius, force, newPosition);
         return cube;
     }
 }

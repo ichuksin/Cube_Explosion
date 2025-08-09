@@ -6,6 +6,7 @@ public class ProbabilityDivider: MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Exploder _exploder;
     [SerializeField] private Raycaster _raycaster;
+    [SerializeField] private ExploideAffect _exploideAffect;
 
     private void OnEnable()
     {
@@ -21,11 +22,14 @@ public class ProbabilityDivider: MonoBehaviour
     {
         float probabylitiValue = Random.value;
 
-        IEnumerable<Cube> newCubes = new List<Cube>();
+        IEnumerable<Cube> affectedCubes ;
 
         if (probabylitiValue <= cube.Probability)
-            newCubes =  _spawner.SpawnFromSeparate(cube);
+            affectedCubes =  _spawner.SpawnFromSeparate(cube);
+        else
+            affectedCubes = _exploideAffect.GetAffected(cube);
+
+        _exploder.ExploideCube(cube, affectedCubes);
  
-        _exploder.ExploideCube(cube, newCubes);
     }
 }

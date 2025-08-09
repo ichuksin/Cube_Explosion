@@ -3,13 +3,10 @@ using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
-    [SerializeField] private float _explosionRadius;
-    [SerializeField] private float _explosionForce;
-
     public void ExploideCube(Cube cube, IEnumerable<Cube> affectedCubes)
     {
         foreach (Cube affectedCube in affectedCubes)
-            affectedCube.Rigidbody.AddExplosionForce(_explosionForce, cube.transform.position, _explosionRadius);
+            affectedCube.Rigidbody.AddExplosionForce(cube.ExplosionForce, cube.transform.position, cube.ExplosionRadius);
         
         cube.Exploid();
     }
